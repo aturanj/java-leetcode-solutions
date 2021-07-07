@@ -22,11 +22,10 @@ public class KeysAndRooms {
 
         openedRoomList.add(room);
 
-        for (var key : rooms.get(room)) {
-            if (!openedRoomList.contains(key)) {
-                checkKeysAndRooms(rooms, key);
-            }
-        }
+        rooms.get(room)
+                .stream()
+                .filter(key -> !openedRoomList.contains(key))
+                .forEachOrdered(key -> checkKeysAndRooms(rooms, key));
     }
 
     public static void main(String[] args) {
@@ -34,10 +33,10 @@ public class KeysAndRooms {
         KeysAndRooms keysAndRooms = new KeysAndRooms();
 
         List<List<Integer>> rooms = new ArrayList<>();
-        rooms.add(Arrays.asList(1));
+        rooms.add(Arrays.asList(1, 3));
+        rooms.add(Arrays.asList(3, 0, 2));
         rooms.add(Arrays.asList(2));
-        rooms.add(Arrays.asList(3));
-        rooms.add(Arrays.asList());
+        rooms.add(Arrays.asList(0));
 
         var result = keysAndRooms.canVisitAllRooms(rooms);
 
