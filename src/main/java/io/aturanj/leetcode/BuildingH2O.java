@@ -3,6 +3,8 @@ package io.aturanj.leetcode;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * https://leetcode.com/problems/building-h2o/
@@ -40,6 +42,43 @@ public class BuildingH2O {
             semaphoreOxygen.release();
         } catch (InterruptedException | BrokenBarrierException ex) {
             System.out.println(ex);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        BuildingH2O buildingH2O = new BuildingH2O();
+
+        //  input: "OOHHHH"
+        //
+        //  expected outputs:
+        //  "HOHHHO", "OHHHHO", "HHOHOH", "HOHHOH",
+        //  "OHHHOH", "HHOOHH", "HOHOHH" or "OHHOHH"
+        //
+        for (int i = 0; i < 2; i++) {
+
+            new Thread(() -> {
+                try {
+                    buildingH2O.oxygen(() -> {
+                        System.out.print("O");
+                    });
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(BuildingH2O.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }).start();
+        }
+
+        for (int i = 0; i < 4; i++) {
+
+            new Thread(() -> {
+                try {
+                    buildingH2O.hydrogen(() -> {
+                        System.out.print("H");
+                    });
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(BuildingH2O.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }).start();
         }
     }
 }
