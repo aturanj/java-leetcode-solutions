@@ -1,6 +1,8 @@
 package io.aturanj.leetcode;
 
 import java.util.function.IntConsumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * https://leetcode.com/problems/print-zero-even-odd/
@@ -67,5 +69,41 @@ public class PrintZeroEvenOdd {
                 notifyAll();
             }
         }
+    }
+
+    public static void main(String[] args) {
+
+        PrintZeroEvenOdd printZeroEvenOdd = new PrintZeroEvenOdd(10);
+        System.out.println(Thread.currentThread().getName());
+
+        new Thread(() -> {
+            try {
+                printZeroEvenOdd.zero((x) -> {
+                    System.out.println(x + " (" + Thread.currentThread().getName() + ")");
+                });
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PrintZeroEvenOdd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }).start();
+
+        new Thread(() -> {
+            try {
+                printZeroEvenOdd.even((x) -> {
+                    System.out.println(x + " (" + Thread.currentThread().getName() + ")");
+                });
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PrintZeroEvenOdd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }).start();
+
+        new Thread(() -> {
+            try {
+                printZeroEvenOdd.odd((x) -> {
+                    System.out.println(x + " (" + Thread.currentThread().getName() + ")");
+                });
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PrintZeroEvenOdd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }).start();
     }
 }
