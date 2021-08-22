@@ -26,10 +26,7 @@ public class PartitionLabels {
 
             list.add(part);
 
-            i = startCharIndex = maxIndex + 1;
-            if (i < s.length() - 1) {
-                maxIndex = s.lastIndexOf(s.charAt(maxIndex + 1) + "");
-            }
+            i = startCharIndex = maxIndex = maxIndex + 1;
         }
 
         return list.stream().map(x -> x.length()).collect(Collectors.toList());
