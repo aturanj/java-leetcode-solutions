@@ -10,7 +10,7 @@ public class ZigZagConversion {
     public String convert(String s, int numRows) {
 
         var list = new ArrayList<StringBuilder>();
-        int i = 0;
+        var i = 0;
 
         while (i < s.length()) {
             for (int j = 0; j < numRows && i < s.length(); j++) {
