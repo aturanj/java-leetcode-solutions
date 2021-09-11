@@ -6,35 +6,34 @@ package io.aturanj.leetcode;
 public class DetermineIfStringHalvesAreAlike {
 
     public boolean halvesAreAlike(String s) {
+
         s = s.toLowerCase();
 
         var counterOne = 0;
-
-        for (var i = 0; i < s.length() / 2; i++) {
-            switch (s.charAt(i)) {
-                case 'a':
-                case 'e':
-                case 'i':
-                case 'o':
-                case 'u':
-                    counterOne++;
-                    break;
-            }
-        }
         var counterTwo = 0;
 
-        for (var i = s.length() / 2; i < s.length(); i++) {
+        for (var i = 0; i < s.length(); i++) {
             switch (s.charAt(i)) {
                 case 'a':
                 case 'e':
                 case 'i':
                 case 'o':
                 case 'u':
-                    counterTwo++;
+                    if (i < s.length() / 2) {
+                        counterOne++;
+                    } else {
+                        counterTwo++;
+                    }
                     break;
             }
-
         }
+
         return counterOne == counterTwo;
+    }
+
+    public static void main(String[] args) {
+        var determine = new DetermineIfStringHalvesAreAlike();
+        var result = determine.halvesAreAlike("AbCdEfGh");
+        System.out.println("result = " + result);
     }
 }
