@@ -1,6 +1,7 @@
 package io.aturanj.leetcode;
 
 import java.util.HashMap;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * https://leetcode.com/problems/tuple-with-same-product/
@@ -32,6 +33,6 @@ public class TupleWithSameProduct {
         var tupleWithSameProduct = new TupleWithSameProduct();
         var result = tupleWithSameProduct.tupleSameProduct(new int[]{2, 3, 4, 6, 8, 12});
         System.out.println("result = " + result);
-        org.junit.jupiter.api.Assertions.assertEquals(40, result);
+        assertEquals(40, result);
     }
 }
