@@ -12,11 +12,11 @@ public class SumOfLeftLeaves {
         return calculate(root.left, true) + calculate(root.right, false);
     }
 
-    private int calculate(TreeNode root, boolean leftLeave) {
+    private int calculate(TreeNode root, boolean leftLeaf) {
         if (root == null) {
             return 0;
         }
-        if (leftLeave && root.left == null && root.right == null) {
+        if (leftLeaf && root.left == null && root.right == null) {
             return root.val;
         } else {
             return calculate(root.left, true) + calculate(root.right, false);
