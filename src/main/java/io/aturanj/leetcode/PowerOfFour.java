@@ -3,27 +3,27 @@ package io.aturanj.leetcode;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * https://leetcode.com/problems/power-of-two/
+ * https://leetcode.com/problems/power-of-four/
  */
-public class PowerOfTwo {
+public class PowerOfFour {
 
-    public boolean isPowerOfTwo(int n) {
+    public boolean isPowerOfFour(int n) {
         switch (n) {
             case 0:
                 return false;
             case 1:
                 return true;
             default:
-                if (n % 2 != 0) {
+                if (n % 4 != 0) {
                     return false;
                 }
         }
-        return isPowerOfTwo(n / 2);
+        return isPowerOfFour(n / 4);
     }
 
     public static void main(String[] args) {
-        var powerOfTwo = new PowerOfTwo();
-        var result = powerOfTwo.isPowerOfTwo(32);
+        var powerOfFour = new PowerOfFour();
+        var result = powerOfFour.isPowerOfFour(64);
         System.out.println("result = " + result);
         assertTrue(result);
     }
