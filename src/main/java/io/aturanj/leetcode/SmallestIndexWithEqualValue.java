@@ -1,6 +1,5 @@
 package io.aturanj.leetcode;
 
-import java.util.TreeSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -10,19 +9,13 @@ public class SmallestIndexWithEqualValue {
 
     public int smallestEqual(int[] nums) {
 
-        var set = new TreeSet<Integer>();
-
         for (var i = 0; i < nums.length; i++) {
             if (i % 10 == nums[i]) {
-                set.add(i);
+                return i;
             }
         }
 
-        if (set.isEmpty()) {
-            return -1;
-        } else {
-            return set.first();
-        }
+        return -1;
     }
 
     public static void main(String[] args) {
