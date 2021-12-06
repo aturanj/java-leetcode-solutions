@@ -30,7 +30,7 @@ public class CountCommonWordsWithOneOccurrence {
     }
 
     public static void main(String[] args) {
-        var count = new CountCommonWordsWithOneOccurence();
+        var count = new CountCommonWordsWithOneOccurrence();
         var result = count.countWords(
                 new String[]{"leetcode", "is", "amazing", "as", "is"},
                 new String[]{"amazing", "leetcode", "is"}
