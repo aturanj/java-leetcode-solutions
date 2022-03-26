@@ -20,21 +20,28 @@ public class DecryptStringFromAlphabetToIntegerMapping {
         var check = false;
         var list = new ArrayList<String>();
 
-        for (var i = s.length() - 1; i > 0; i += 0) {
+        for (var i = s.length() - 1; i >= 0; i += 0) {
 
             if (s.charAt(i) == '#') {
+                check = false;
                 prev = s.substring(i - 2, i);
                 i -= 3;
             } else {
-                current = s.substring(i - 1, i + 1);
-                /**
-                 * TODO: Needs to be revised
-                 */
-                i -= 2;
+                check = true;
+                var j = i;
+
+                while (true) {
+                    if (j >= 0 && s.charAt(j) != '#') {
+                        j--;
+                    } else {
+                        break;
+                    }
+                }
+                current = s.substring(j + 1, i + 1);
+                i = j;
             }
 
-            if (!current.equals("") && check == false) {
-                check = true;
+            if (check) {
                 var sb = new StringBuilder();
                 for (var ch : current.toCharArray()) {
                     sb.append(charSetOne.charAt(Integer.valueOf("" + ch) - 1));
@@ -52,8 +59,8 @@ public class DecryptStringFromAlphabetToIntegerMapping {
 
     public static void main(String[] args) {
         var decryptString = new DecryptStringFromAlphabetToIntegerMapping();
-        var result = decryptString.freqAlphabets("10#11#12");
+        var result = decryptString.freqAlphabets("824#15#826#");
         System.out.println("result = " + result);
-        assertEquals("jkab", result);
+        assertEquals("hxohz", result);
     }
 }
