@@ -15,8 +15,8 @@ public class DecryptStringFromAlphabetToIntegerMapping {
         var charSetOne = "abcdefghi";
         var charSetTwo = "jklmnopqrstuvwxyz";
 
-        var current = "";
-        var prev = "";
+        var straight = "";
+        var sharp = "";
         var check = false;
         var list = new ArrayList<String>();
 
@@ -24,7 +24,7 @@ public class DecryptStringFromAlphabetToIntegerMapping {
 
             if (s.charAt(i) == '#') {
                 check = false;
-                prev = s.substring(i - 2, i);
+                sharp = s.substring(i - 2, i);
                 i -= 3;
             } else {
                 check = true;
@@ -37,18 +37,18 @@ public class DecryptStringFromAlphabetToIntegerMapping {
                         break;
                     }
                 }
-                current = s.substring(j + 1, i + 1);
+                straight = s.substring(j + 1, i + 1);
                 i = j;
             }
 
             if (check) {
                 var sb = new StringBuilder();
-                for (var ch : current.toCharArray()) {
+                for (var ch : straight.toCharArray()) {
                     sb.append(charSetOne.charAt(Integer.valueOf("" + ch) - 1));
                 }
                 list.add(sb.toString());
             } else {
-                list.add("" + charSetTwo.charAt(Integer.valueOf(prev) - 10));
+                list.add("" + charSetTwo.charAt(Integer.valueOf(sharp) - 10));
             }
         }
 
