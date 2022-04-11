@@ -1,7 +1,6 @@
 package io.aturanj.leetcode;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -13,7 +12,6 @@ public class CountVowelSubstringsOfAString {
 
         var letters = Arrays.asList("a", "e", "i", "o", "u");
         var counter = 0;
-        var set = new HashSet<String>();
 
         for (var i = 0; i < word.length(); i++) {
             for (var j = word.length() - 1; i < j; j--) {
@@ -21,10 +19,6 @@ public class CountVowelSubstringsOfAString {
                 var sub = word.substring(i, j + 1);
 
                 if (sub.length() >= letters.size()) {
-
-                    if (!set.add(sub)) {
-                        continue;
-                    }
 
                     var check = true;
 
@@ -35,7 +29,13 @@ public class CountVowelSubstringsOfAString {
                         }
                     }
 
-                    //TODO: add consonant control (for-loop)
+                    for (var l : sub.toCharArray()) {
+                        if (!letters.contains("" + l)) { // no vowel, consonant
+                            check = false;
+                            break;
+                        }
+                    }
+
                     if (check) {
                         counter++;
                         System.out.println(sub);
@@ -49,8 +49,8 @@ public class CountVowelSubstringsOfAString {
 
     public static void main(String[] args) {
         var countVowelSubstringsOfAString = new CountVowelSubstringsOfAString();
-        var result = countVowelSubstringsOfAString.countVowelSubstrings("aeiouu");
+        var result = countVowelSubstringsOfAString.countVowelSubstrings("cuaieuouac");
         System.out.println("result = " + result);
-        assertEquals(2, result);
+        assertEquals(7, result);
     }
 }
