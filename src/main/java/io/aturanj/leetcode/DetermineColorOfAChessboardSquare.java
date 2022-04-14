@@ -1,7 +1,7 @@
 package io.aturanj.leetcode;
 
 import java.util.Arrays;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * https://leetcode.com/problems/determine-color-of-a-chessboard-square/
@@ -19,8 +19,8 @@ public class DetermineColorOfAChessboardSquare {
 
     public static void main(String[] args) {
         var determineColor = new DetermineColorOfAChessboardSquare();
-        var result = determineColor.squareIsWhite("h3");
+        var result = determineColor.squareIsWhite("c7");
         System.out.println("result = " + result);
-        assertTrue(result);
+        assertFalse(result);
     }
 }
