@@ -1,7 +1,9 @@
 package io.aturanj.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * https://leetcode.com/problems/string-matching-in-an-array/
@@ -23,5 +25,13 @@ public class StringMatchingInAnArray {
         }
 
         return list;
+    }
+
+    public static void main(String[] args) {
+        var stringMatchingInAnArray = new StringMatchingInAnArray();
+        var result = stringMatchingInAnArray
+                .stringMatching(new String[]{"mass", "as", "hero", "superhero"});
+        System.out.println("result = " + result);
+        assertEquals(Arrays.asList("as", "hero"), result);
     }
 }
