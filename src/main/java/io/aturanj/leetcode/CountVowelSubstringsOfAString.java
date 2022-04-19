@@ -48,9 +48,15 @@ public class CountVowelSubstringsOfAString {
     }
 
     public static void main(String[] args) {
+
         var countVowelSubstringsOfAString = new CountVowelSubstringsOfAString();
+
         var result = countVowelSubstringsOfAString.countVowelSubstrings("cuaieuouac");
         System.out.println("result = " + result);
         assertEquals(7, result);
+
+        var result2 = countVowelSubstringsOfAString.countVowelSubstrings("unicornarihan");
+        System.out.println("result2 = " + result2);
+        assertEquals(0, result2);
     }
 }
