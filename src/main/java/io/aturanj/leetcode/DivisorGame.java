@@ -1,5 +1,7 @@
 package io.aturanj.leetcode;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * https://leetcode.com/problems/divisor-game/
  */
@@ -12,6 +14,7 @@ public class DivisorGame {
         while (n > 1) {
 
             int counter = 1;
+
             while (counter < n) {
                 if (n % counter == 0) {
                     break;
@@ -31,5 +34,6 @@ public class DivisorGame {
         var game = new DivisorGame();
         var result = game.divisorGame(2);
         System.out.println("result = " + result);
+        assertTrue(result);
     }
 }
