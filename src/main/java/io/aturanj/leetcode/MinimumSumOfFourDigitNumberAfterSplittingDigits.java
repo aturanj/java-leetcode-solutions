@@ -3,6 +3,7 @@ package io.aturanj.leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * https://leetcode.com/problems/minimum-sum-of-four-digit-number-after-splitting-digits/
@@ -34,5 +35,12 @@ public class MinimumSumOfFourDigitNumberAfterSplittingDigits {
         }
 
         return Collections.min(list);
+    }
+
+    public static void main(String[] args) {
+        var sum = new MinimumSumOfFourDigitNumberAfterSplittingDigits();
+        var result = sum.minimumSum(2932);
+        System.out.println("result = " + result);
+        assertEquals(52, result);
     }
 }
