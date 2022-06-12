@@ -1,6 +1,7 @@
 package io.aturanj.leetcode;
 
 import java.util.Arrays;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * https://leetcode.com/problems/move-zeroes/
@@ -45,7 +46,9 @@ public class MoveZeroes {
     }
 
     public static void main(String[] args) {
-        MoveZeroes moveZeroes = new MoveZeroes();
-        moveZeroes.moveZeroes(new int[]{0, 1, 0, 3, 12});
+        var moveZeroes = new MoveZeroes();
+        var nums = new int[]{0, 1, 0, 3, 12};
+        moveZeroes.moveZeroes(nums);
+        assertArrayEquals(new int[]{1, 3, 12, 0, 0}, nums);
     }
 }
