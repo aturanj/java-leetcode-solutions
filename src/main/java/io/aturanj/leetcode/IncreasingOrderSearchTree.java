@@ -8,18 +8,30 @@ import java.util.List;
  */
 public class IncreasingOrderSearchTree {
 
-    List list = new ArrayList<TreeNode>();
+    List<TreeNode> list = new ArrayList<>();
 
     public TreeNode increasingBST(TreeNode root) {
-        //TODO: add logic
-        return root;
+
+        traverse(root);
+
+        for (int i = 0; i < list.size() - 1; i++) {
+            list.get(i).right = list.get(i + 1);
+            list.get(i).left = null;
+        }
+
+        list.get(list.size() - 1).right = null;
+        list.get(list.size() - 1).left = null;
+
+        return list.get(0);
     }
 
     private void traverse(TreeNode root) {
-        //InOrder traversing
-        increasingBST(root.left);
-        list.add(root);
-        increasingBST(root.right);
+        if (root != null) {
+            //InOrder traversing
+            traverse(root.left);
+            list.add(root);
+            traverse(root.right);
+        }
     }
 
     /**
