@@ -14,15 +14,19 @@ public class IncreasingOrderSearchTree {
 
         traverse(root);
 
-        for (int i = 0; i < list.size() - 1; i++) {
-            list.get(i).right = list.get(i + 1);
-            list.get(i).left = null;
+        var lastIndex = list.size() - 1;
+
+        for (int i = 0; i < lastIndex; i++) {
+            var currentNode = list.get(i);
+            currentNode.right = list.get(i + 1); // next node
+            currentNode.left = null;
         }
 
-        list.get(list.size() - 1).right = null;
-        list.get(list.size() - 1).left = null;
+        var lastNode = list.get(lastIndex);
+        lastNode.right = null; // preventing cycle
+        lastNode.left = null; // preventing cycle
 
-        return list.get(0);
+        return list.get(0); // first node
     }
 
     private void traverse(TreeNode root) {
