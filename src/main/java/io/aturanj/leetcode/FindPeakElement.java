@@ -1,11 +1,14 @@
 package io.aturanj.leetcode;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * https://leetcode.com/problems/find-peak-element/
  */
 public class FindPeakElement {
 
     public int findPeakElement(int[] nums) {
+
         for (var i = 1; i < nums.length; i++) {
             if (nums[i] < nums[i - 1]) {
                 return i - 1;
@@ -19,5 +22,7 @@ public class FindPeakElement {
         var findPeakElement = new FindPeakElement();
         var result = findPeakElement.findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4});
         System.out.println("result = " + result);
+        //TODO: Result is not true, update the logic 
+        assertEquals(5, result);
     }
 }
