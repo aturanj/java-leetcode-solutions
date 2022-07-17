@@ -1,6 +1,6 @@
 package io.aturanj.leetcode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * https://leetcode.com/problems/find-peak-element/
@@ -22,7 +22,6 @@ public class FindPeakElement {
         var findPeakElement = new FindPeakElement();
         var result = findPeakElement.findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4});
         System.out.println("result = " + result);
-        //TODO: Result is not true, update the logic 
-        assertEquals(5, result);
+        assertTrue(result == 1 || result == 5);
     }
 }
