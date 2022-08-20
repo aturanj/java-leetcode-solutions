@@ -1,5 +1,7 @@
 package io.aturanj.leetcode;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * https://leetcode.com/problems/goat-latin/
  */
@@ -13,19 +15,9 @@ public class GoatLatin {
 
         for (var item : array) {
             switch (item.charAt(0)) {
-                case 'a':
-                case 'A':
-                case 'e':
-                case 'E':
-                case 'i':
-                case 'I':
-                case 'o':
-                case 'O':
-                case 'u':
-                case 'U':
+                case 'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U' ->
                     sb.append(item).append("ma");
-                    break;
-                default:
+                default ->
                     sb.append(item.substring(1))
                             .append(item.charAt(0))
                             .append("ma");
@@ -47,5 +39,7 @@ public class GoatLatin {
         var result = goatLatin
                 .toGoatLatin("The quick brown fox jumped over the lazy dog");
         System.out.println("result = " + result);
+        assertEquals("heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa "
+                + "overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa", result);
     }
 }
